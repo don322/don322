@@ -1,4 +1,4 @@
-## Hi there 👋
+## Current Masters of Business Analytics Students at UBC. This is a repository of projects that I have worked on both individually and in group settings. 
 
 <!--
 **don322/don322** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
