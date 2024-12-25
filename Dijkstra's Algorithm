@@ -1,1 +1,230 @@
+g = 1.5   #green
+y = 2.4   #yellow
+r = 6     #red
+across = [   
+    [g, g, g, g, g, y, y, y, g, g], 
+    [g, y, y, g, g, y, r, r, r, y], 
+    [y, y, r, r, g, g, y, y, g, g], 
+    [g, g, g, g, g, y, y, y, y, y], 
+    [g, r, r, y, y, y, y, y, r, r], 
+    [g, g, g, g, g, g, g, g, g, g], 
+    [g, g, g, g, g, g, g, g, g, g], 
+    [y, y, y, y, y, y, y, y, r, r], 
+    [g, r, r, r, r, r, r, y, y, y], 
+    [g, g, g, g, y, y, y, y, y, y], 
+    [g, g, g, g, g, g, y, y, g, g],
+    [g, y, y, y, y, y, y, y, y, y],
+    [g, r, r, r, y, y, y, g, g, g], 
+    [g, y, y, y, g, g, r, g, g, g], 
+    [g, g, y, y, y, y, g, g, g, g], 
+    [g, g, g, r, r, r, g, g, g, g], 
+    [g, g, g, g, y, y, y, y, g, g], 
+    [g, g, g, g, g, r, r, y, r, r], 
+    [y, y, y, y, r, r, y, y, y, g], 
+    [g, g, g, g, g, g, y, y, y, g], 
+    [g, g, g, y, y, y, r, r, r, g]
+]
 
+#down[column, row]
+down = [ 
+    [g, g, y, y, y, y, y, g, g, r, r, g, g, y, r, r, r, r, g, g], #0
+    [g, g, g, g, y, y, g, g, y, r, r, r, r, r, g, g, g, g, g, g], 
+    [g, g, g, y, y, y, g, g, g, g, r, r, r, g, g, g, g, g, g, g], #2
+    [g, g, g, g, g, r, r, r, r, r, g, g, g, g, g, g, g, g, g, g], 
+    [g, g, y, y, y, y, y, y, r, r, r, r, r, r, g, g, g, g, g, g], #4
+    [g, g, g, g, g, g, g, r, r, g, y, y, g, g, g, g, g, g, g, g], 
+    [g, g, g, y, y, y, g, g, g, g, r, r, r, g, g, g, g, g, g, g], #6
+    [g, g, g, r, r, r, g, g, g, g, g, g, g, y, y, y, g, g, g, g], 
+    [g, g, g, g, g, r, r, r, r, g, g, g, r, r, r, g, g, g, g, g], #8
+    [g, g, g, g, y, y, y, g, g, g, g, g, g, y, y, y, g, g, g, g], 
+    [r, r, r, r, r, y, g, g, g, g, r, r, r, r, r, y, g, g, y, y] #10
+]
+
+#used output from above to recreate the matrix using the minute values
+across= [[1.5, 1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 1.5, 1.5], [1.5, 2.4, 2.4, 1.5, 1.5, 2.4, 6, 6, 6, 2.4], 
+         [2.4, 2.4, 6, 6, 1.5, 1.5, 2.4, 2.4, 1.5, 1.5], [1.5, 1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 2.4, 2.4], 
+         [1.5, 6, 6, 2.4, 2.4, 2.4, 2.4, 2.4, 6, 6], [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], 
+         [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], [2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 6, 6], 
+         [1.5, 6, 6, 6, 6, 6, 6, 2.4, 2.4, 2.4], [1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4], 
+         [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 1.5, 1.5], [1.5, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4], 
+         [1.5, 6, 6, 6, 2.4, 2.4, 2.4, 1.5, 1.5, 1.5], [1.5, 2.4, 2.4, 2.4, 1.5, 1.5, 6, 1.5, 1.5, 1.5], 
+         [1.5, 1.5, 2.4, 2.4, 2.4, 2.4, 1.5, 1.5, 1.5, 1.5], [1.5, 1.5, 1.5, 6, 6, 6, 1.5, 1.5, 1.5, 1.5], 
+         [1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 2.4, 1.5, 1.5], [1.5, 1.5, 1.5, 1.5, 1.5, 6, 6, 2.4, 6, 6], 
+         [2.4, 2.4, 2.4, 2.4, 6, 6, 2.4, 2.4, 2.4, 1.5], [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 1.5], 
+         [1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 6, 6, 6, 1.5]]
+
+down= [[1.5, 1.5, 2.4, 2.4, 2.4, 2.4, 2.4, 1.5, 1.5, 6, 6, 1.5, 1.5, 2.4, 6, 6, 6, 6, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 1.5, 1.5, 2.4, 6, 6, 6, 6, 6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 1.5, 1.5, 1.5, 1.5, 6, 6, 6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 1.5, 1.5, 6, 6, 6, 6, 6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 6, 6, 6, 6, 6, 6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 6, 6, 1.5, 2.4, 2.4, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 1.5, 1.5, 1.5, 1.5, 6, 6, 6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 6, 6, 6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 1.5, 1.5, 6, 6, 6, 6, 1.5, 1.5, 1.5, 6, 6, 6, 1.5, 1.5, 1.5, 1.5, 1.5], 
+       [1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.4, 2.4, 2.4, 1.5, 1.5, 1.5, 1.5], 
+       [6, 6, 6, 6, 6, 2.4, 1.5, 1.5, 1.5, 1.5, 6, 6, 6, 6, 6, 2.4, 1.5, 1.5, 2.4, 2.4]]
+
+#set up matrix to represent each intersection on the map as one value on the matrix
+#following dijkstra's algorithm, set each node to "infinity" (picked a random large number 1000 here)
+nodes = np.full((21, 11), 1000, dtype = float)
+
+#separte matrix to record the direction each node (intersection) came from to make it easier to follow the path later
+pathing = np.empty((21, 11), dtype = "U10")
+
+#coordinates for H
+row = 16
+col = 2
+#Initialize, setting starting node as 0
+nodes[row, col] = 0
+pathing[row][col] = "H"
+nodes
+
+#Setup - find shortest path of the first 4 nodes around H by pulling the correct minutes from the across and down matrix
+
+#down
+if row + 1 <= 21: 
+    nodes[row + 1, col] = down[col][row]
+    pathing[row + 1, col] = "D"
+#up
+if row - 1 >= 0: 
+    nodes[row - 1, col] = down[col][row-1]
+    pathing[row - 1, col] = "U"
+#left
+if col - 1 >= 0: 
+    nodes[row, col-1] = across[row][col-1]
+    pathing[row, col - 1] = "L"
+#right
+if col + 1 <= 11: 
+    nodes[row, col+1] = across[row][col]
+    pathing[row, col + 1] = "R"
+
+print(nodes)
+
+
+def dijkstras(row, col):
+    """Function created to implement Dijkstra's algorithm. It essentially looks up/down/left/right from the inputted coordinates, and then 
+    adds the time it takes to travel in that direction by pulling the minutes from the across and down matrix previously generated. 
+    It looks into each direction even if there is a value there already, in that case it would replace it if the new value is smaller than 
+    the previous one in order to find the shortest possible path. It also adds the direction it went from into "pathing" so we can easily 
+    trace the path back later on.
+    """
+    #down
+    if row + 1 <= 20 and nodes[row + 1][col] != 0:
+        new = down[col][row] + nodes[row][col]
+        if new < nodes[row + 1][col]: 
+            nodes[row + 1, col] = new
+            pathing[row + 1, col] = "D"
+    #up
+    if row - 1 >= 0 and nodes[row - 1][col] != 0:
+        new = down[col][row-1] + nodes[row][col]
+        if new < nodes[row - 1][col]: 
+            nodes[row - 1, col] = new
+            pathing[row - 1, col] = "U"
+    #left    
+    if col - 1 >= 0 and nodes[row][col -1] != 0:
+        new = across[row][col-1] + nodes[row][col]
+        if new < nodes[row][col-1]: 
+            nodes[row, col-1] = new
+            pathing[row, col - 1] = "L"
+    #right
+    if col + 1 <= 10 and nodes[row][col+1] != 0:
+        new = across[row][col] + nodes[row][col]
+        if new < nodes[row][col + 1]: 
+            nodes[row, col + 1] = new
+            pathing[row, col + 1] = "R"
+
+"""While loop to use the function created above to fill in all the "infinity"(1000) values. 
+By only applying it to those that are not "infinity", it should fill in the values starting from the first 
+four nodes we previously calculated paths for already, and then apply the function onto the newly caculated nodes, and repeat. 
+"""
+while 1000 in nodes: 
+    for i in range(21): 
+        for j in range(11): 
+            if nodes[i][j] != 1000 and nodes[i][j] != 0:
+                dijkstras(i, j)
+
+
+#Coordinates of the destination nodes [row, col]
+dic = {
+    'A': [1, 1],  
+    'B': [1, 9],
+    'C': [7, 4], 
+    'D': [10, 9]
+}
+
+print("Shortest Path for all intersections:\n", nodes)
+
+print("\nPathing from H node:\n", pathing)
+
+print("Shortest Path for:")
+for i in dic: 
+    print(f"H to {i} = {round(nodes[dic[i][0], dic[i][1]], 2)} minutes")
+
+import matplotlib.pyplot as plt
+rows, cols = 20, 10
+
+#node coordinates
+h = (16, 2)
+a = (1, 1)
+b = (1, 9)
+c = (7, 4)
+d = (10, 9)
+
+path_a = [(16, 2), (15, 2), (15, 3), (14, 3), (13, 3), (12, 3), (11, 3), (10, 3), (10, 2), (9, 2), (8, 2), (7, 2), (6, 2), 
+          (5, 2), (5, 1), (4, 1), (3, 1), (2, 1), (1, 1)]
+path_b = [(16, 2), (15, 2), (15, 3), (14, 3), (13, 3), (12, 3), (11, 3), (10, 3), (10, 4),  (10, 5),  (10, 6),  (9, 6), (8, 6), (7, 6),
+          (6, 6), (5, 6), (5, 7), (5, 8), (4, 8), (3, 8), (2,8), (2, 9), (1, 9)]
+path_c = [(16, 2), (15, 2), (15, 3), (14, 3), (13, 3), (12, 3), (11, 3), (10, 3), (10, 2), (9, 2), (8, 2), (7, 2), (7, 3), (7, 4)]
+path_d = [(16, 2), (15, 2), (15, 3), (14, 3), (13, 3), (12, 3), (11, 3), (10, 3), (10, 4), (10, 5), (10, 6), (10, 7), (10, 8), (10, 9)]
+
+# Extract x (column) and y (row) coordinates for the path
+x_a = [p[1] for p in path_a]
+y_a= [20 - p[0] for p in path_a]
+x_b = [p[1] for p in path_b]
+y_b= [20 - p[0] for p in path_b]
+x_c = [p[1] for p in path_c]
+y_c= [20 - p[0] for p in path_c]
+x_d = [p[1] for p in path_d]
+y_d= [20 - p[0] for p in path_d]
+
+# Plot the grid
+fig, ax = plt.subplots(figsize=(5, 9))
+ax.set_xlim(0, cols)
+ax.set_ylim(0, rows)
+
+# Add gridlines along integer coordinates
+ax.set_xticks(np.arange(0, cols + 1, 1))
+ax.set_yticks(np.arange(0, rows + 1, 1))
+ax.grid(color="black", linestyle='-', linewidth=0.5)
+
+# Disable tick labels
+ax.tick_params(bottom=False, left=False, labelbottom=False, labelleft=False)
+
+# Plot the path directly on gridlines
+ax.plot(x_a, y_a, color="blue", linewidth=2, marker='o', markersize=5, alpha=0.7)
+ax.plot(x_b, y_b, color="orange", linewidth=2, marker='o', markersize=5, alpha=0.7)
+ax.plot(x_c, y_c, color="red", linewidth=2, marker='o', markersize=5, alpha=0.7)
+ax.plot(x_d, y_d, color="green", linewidth=2, marker='o', markersize=5, alpha=0.7)
+
+
+ax.plot(h[1], 20 - h[0], color="black", marker="o", markersize=9)  # Mark H
+ax.plot(a[1], 20 - a[0], color="black", marker="o", markersize=7)  # Mark A
+ax.plot(b[1], 20 - b[0], color="black", marker="o", markersize=7)  # Mark B
+ax.plot(c[1], 20 - c[0], color="black", marker="o", markersize=7)  # Mark C
+ax.plot(d[1], 20 - d[0], color="black", marker="o", markersize=7)  # Mark D
+
+
+ax.text(h[1] - 0.15, 20 - h[0], "H", ha="right", va="bottom", fontsize=12, color="black")  # Label H 
+ax.text(a[1] - 0.1, 20 - a[0], "A", ha="right", va="bottom", fontsize=12, color="blue")  # Label A
+ax.text(b[1] - 0.1, 20 - b[0], "B", ha="right", va="bottom", fontsize=12, color="orange")  # Label B
+ax.text(c[1] - 0.1, 20 - c[0], "C", ha="right", va="bottom", fontsize=12, color="red")  # Label C
+ax.text(d[1] - 0.1, 20 - d[0], "D", ha="right", va="bottom", fontsize=12, color="green")  # Label D
+
+
+# Show the plot
+print("Map")
+plt.show()
+print("Minimum time to drive from:")
+for i in dic: 
+    print(f"H to {i} = {round(nodes[dic[i][0], dic[i][1]], 2)} minutes")
